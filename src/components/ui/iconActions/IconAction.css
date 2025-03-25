@@ -1,0 +1,23 @@
+@import'../../../styles/variables/global.css';
+
+.icons-container {
+    display: flex;
+    gap: 15px;
+    align-items: center;
+}
+  
+.icon {
+    font-size: 24px;
+    color: var(--background-color);
+    cursor: pointer;
+    transition: color 0.3s ease;
+}
+  
+.icon:hover {
+    color: var(--background-color);
+}
+  
+.delete:hover {
+    color: var(--secondary-color)
+}
+  
