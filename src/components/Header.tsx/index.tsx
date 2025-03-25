@@ -1,5 +1,5 @@
 import { Menu, Bell, User } from 'lucide-react';
-import './Header.css';
+import '../../styles/component/header.css';
 
 const Header = () => {
 

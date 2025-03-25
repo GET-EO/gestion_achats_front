@@ -1,8 +1,9 @@
+@import '../../styles/variables/global.css';
 .header {
     display: flex;
     align-items: center;
     justify-content: space-between;
-    background-color: #1f2937;
+    background-color: var(--background-color);
     color: white;
     padding: 1rem;
     position: fixed;

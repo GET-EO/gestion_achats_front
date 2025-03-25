@@ -1,6 +1,6 @@
 import { LogOut, Users, FileText, DollarSign, Home } from 'lucide-react';
 import { NavLink } from 'react-router-dom';
-import './Sidebar.css';
+import '../../styles/component/sidebar.css';
 
 const Sidebar = () => {
 
@@ -28,6 +28,11 @@ const Sidebar = () => {
           <li>
             <NavLink to="/budget" className="sidebar-link">
               <DollarSign size={20} /> Gestion Budget
+            </NavLink>
+          </li>
+          <li>
+            <NavLink to="/budget" className="sidebar-link">
+              <DollarSign size={20} /> Gestion materiel
             </NavLink>
           </li>
         </ul>
