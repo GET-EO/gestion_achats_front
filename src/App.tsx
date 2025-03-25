@@ -5,6 +5,7 @@ import Dashboard from "./page/dashboard/index.tsx"
 import Users from "./page/user/index.tsx"
 import Demandes from "./page/demande/index.tsx"
 import Budget from "./page/budget/index.tsx"
+import Materiel from "./page/materiel/index.tsx"
 
 function App() {
 
@@ -20,6 +21,7 @@ function App() {
             <Route path="/users" element={<Users />} />
             <Route path="/demandes" element={<Demandes />} />
             <Route path="/budget" element={<Budget />} />
+            <Route path="/materiel" element={<Materiel />} />
           </Routes>
         </div>
       </div>

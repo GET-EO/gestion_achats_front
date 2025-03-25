@@ -31,7 +31,7 @@ const Sidebar = () => {
             </NavLink>
           </li>
           <li>
-            <NavLink to="/budget" className="sidebar-link">
+            <NavLink to="/materiel" className="sidebar-link">
               <DollarSign size={20} /> Gestion materiel
             </NavLink>
           </li>
