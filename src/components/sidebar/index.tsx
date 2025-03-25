@@ -1,20 +1,22 @@
-import { LogOut } from 'lucide-react';
+import { LogOut, Users, FileText, DollarSign, Home } from 'lucide-react';
+import { NavLink } from 'react-router-dom';
 import './Sidebar.css';
 
 const Sidebar = () => {
 
   return (
     <aside className="sidebar">
-      <h2 className="sidebar-title">Side bar</h2>
+      <h1 className="sidebar-title">Side bar</h1>
       <nav className="sidebar-nav">
-        {/* <ul>
+        <ul>
           <li>
             <NavLink to="/dashboard" className="sidebar-link">
-              <Home size={20} /> Dashboard
+              <Home size={20}/> Dashboard
             </NavLink>
           </li>
+          
           <li>
-            <NavLink to="/utilisateurs" className="sidebar-link">
+            <NavLink to="/users" className="sidebar-link">
               <Users size={20} /> Gestion Utilisateurs
             </NavLink>
           </li>
@@ -28,7 +30,7 @@ const Sidebar = () => {
               <DollarSign size={20} /> Gestion Budget
             </NavLink>
           </li>
-        </ul> */}
+        </ul>
       </nav>
       <button className="sidebar-logout">
         <LogOut size={20} /> Déconnexion
