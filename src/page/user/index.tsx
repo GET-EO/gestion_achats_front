@@ -1,5 +1,5 @@
-import "./Users.css"
-import FormModal from "../ui/formModal"
+import "../../styles/user/index.css"
+import FormModal from "../../components/ui/formModal"
 import { useState } from "react"
 
 const Users = () => {

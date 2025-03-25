@@ -1,4 +1,4 @@
-import './Dashboard.css';
+import '../../styles/dashboard/index.css';
 
 const Dashboard = () => {
   return (
