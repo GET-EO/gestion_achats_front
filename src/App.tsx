@@ -1,5 +1,5 @@
 import { Routes, Route, Navigate } from "react-router-dom"
-import Header from "./components/Header.tsx/index.tsx"
+import Header from "./components/Header/index.tsx"
 import Sidebar from "./components/Sidebar/index.tsx"
 import Dashboard from "./page/dashboard/index.tsx"
 import Users from "./page/user/index.tsx"

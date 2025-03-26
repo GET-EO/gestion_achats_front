@@ -2,15 +2,75 @@
 .dashboard-container {
     display: flex;
     flex-direction: column;
+    gap: 16px;
     align-items: center;
     padding: 20px;
-    background-color: rgb(234, 234, 234);
+    background-color: white;
     height: 84.5vh;
     width: 77%;
     margin-left: 17.6rem;
     transform: translateY(59px);
     position: fixed;
   }
+  .dashboard-header {
+    width: 100%;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    padding-bottom: 8px;
+  }
+  
+  .dashboard-title {
+    font-size: 2rem;
+    font-weight: bold;
+  }
+  
+  .prediction-button {
+    padding: 10px 20px;
+    background-color: var(--primary-color);
+    color: white;
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+    font-size: 1rem;
+  }
+  
+  .prediction-button:hover {
+    background-color: var(--secondary-color);
+  }
+  
+  .modal {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background-color: rgba(0, 0, 0, 0.5);
+  }
+  
+  .modal-content {
+    background-color: white;
+    padding: 20px;
+    border-radius: 8px;
+    text-align: center;
+    width: 400px;
+  }
+  
+  .close {
+    position: absolute;
+    top: 10px;
+    right: 10px;
+    font-size: 1.5rem;
+    cursor: pointer;
+  }
+  
+  .close:hover {
+    color: red;
+  }
+  
   
   .dashboard-title {
     font-size: 2rem;
@@ -19,18 +79,38 @@
   }
   
   .dashboard-cards {
-    display: grid;
-    grid-template-columns: repeat(auto-fill, minmax(250px, 1fr));
+    display: flex;
     gap: 20px;
     width: 100%;
-    max-width: 1200px;
+  }
+  .dashboard-info{
+    display: flex;
+    gap: 20px;
+    width: 100%;
+  }
+  .dashboard-info .card h2{
+    font-size: 40px;
+    color: var(--primary-color);
+  }
+  .dashboard-info .card p{
+    font-size: 20px;
+    font-weight: 300;
+  }
+  .dashboard-info .card{
+    display: flex;
+    flex-direction: column;
+    justify-content: left;
+    box-shadow: rgba(0, 0, 0, 0.05) 0px 6px 24px 0px, rgba(0, 0, 0, 0.08) 0px 0px 0px 1px;
+    align-items: flex-start;
   }
   
   .card {
+    height: fit-content;
+    width: 43%;
     background-color: #fff;
     padding: 20px;
     border-radius: 8px;
-    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+    box-shadow: rgba(0, 0, 0, 0.05) 0px 6px 24px 0px, rgba(0, 0, 0, 0.08) 0px 0px 0px 1px;
     text-align: center;
   }
   
@@ -44,4 +124,15 @@
     font-weight: bold;
     color: #333;
   }
+  .statistique-title{
+    font-size: 1.5rem;
+    font-weight: bold;
+    color: var(--secondary-color);
+  }
+  .statistique-button{
+    padding: 8px;
+    font-size: 14px;
+    cursor: pointer;
+  }
+  
   
