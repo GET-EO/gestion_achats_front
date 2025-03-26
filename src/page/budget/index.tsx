@@ -3,7 +3,8 @@ import "../../styles/budget/index.css"
 import ActionIcons from "../../components/ui/iconActions"
 import Options from "../../components/Options"
 import FormModal from "../../components/ui/formModal"
-import { useState } from "react"
+import { useEffect, useState } from "react"
+import BudgetService from "../../services/api_service/budgetService"
 
 const budgets = [
     {
@@ -28,7 +29,7 @@ const budgets = [
       "remaining_amount": 10000,
     },
     {
-      "id": "3",
+      "id": "4",
       "department": "Logistique",
       "total_amount": 20000,
       "used_amount": 10000,
@@ -39,8 +40,36 @@ const budgets = [
 
 
 const Budget = () => {
-  const[showModal, setShowModal] = useState(false)
-  
+  const[showModal, setShowModal] = useState(false);
+  const [budget, setBudget] = useState<any>([
+    {
+      "id_budget": "en chargement",
+      "department": "en chargement",
+      "total_amount": "en chargement",
+      "used_amount": "en chargement",
+      "remaining_amount": "en chargement",
+      "created_at": "2025-03-26T08:06:42.062Z"
+    }]);
+  useEffect(() => {
+    const fetchBudget = async () => {
+        try {
+            const data = await BudgetService.getBudget();
+            setBudget(data);
+            console.log(data)
+        } catch (err: any) {
+            console.log(err.message);
+        } 
+    };
+
+    fetchBudget();
+}, [budget]);
+
+  const [formData, setFormData] = useState({
+        department: "",
+        total_amount: 0,
+        used_amount: 0,
+        remaining_amount: 0,
+    });
   return(
         <div className="budget-container">
         {/* <Button variant="contained" >Add new Budget</Button> */}
@@ -57,7 +86,7 @@ const Budget = () => {
               </TableRow>
             </TableHead>
             <TableBody>
-              {budgets.map((budget) => (
+              {budget.map((budget: any) => (
               <TableRow
                 key={budget.id}
                 sx={{ '&:last-child td, &:last-child th': { border: 0 } }}
