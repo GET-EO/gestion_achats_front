@@ -13,9 +13,11 @@
     position: fixed;
   }
   .dashboard-header {
+    width: 100%;
     display: flex;
     align-items: center;
     justify-content: space-between;
+    padding-bottom: 8px;
   }
   
   .dashboard-title {
@@ -25,7 +27,7 @@
   
   .prediction-button {
     padding: 10px 20px;
-    background-color: #4CAF50;
+    background-color: var(--primary-color);
     color: white;
     border: none;
     border-radius: 5px;
@@ -34,10 +36,9 @@
   }
   
   .prediction-button:hover {
-    background-color: #45a049;
+    background-color: var(--secondary-color);
   }
   
-  /* Modal styles */
   .modal {
     display: flex;
     justify-content: center;
@@ -87,6 +88,21 @@
     gap: 20px;
     width: 100%;
   }
+  .dashboard-info .card h2{
+    font-size: 40px;
+    color: var(--primary-color);
+  }
+  .dashboard-info .card p{
+    font-size: 20px;
+    font-weight: 300;
+  }
+  .dashboard-info .card{
+    display: flex;
+    flex-direction: column;
+    justify-content: left;
+    box-shadow: rgba(0, 0, 0, 0.05) 0px 6px 24px 0px, rgba(0, 0, 0, 0.08) 0px 0px 0px 1px;
+    align-items: flex-start;
+  }
   
   .card {
     height: fit-content;
@@ -94,7 +110,7 @@
     background-color: #fff;
     padding: 20px;
     border-radius: 8px;
-    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+    box-shadow: rgba(0, 0, 0, 0.05) 0px 6px 24px 0px, rgba(0, 0, 0, 0.08) 0px 0px 0px 1px;
     text-align: center;
   }
   
@@ -108,4 +124,15 @@
     font-weight: bold;
     color: #333;
   }
+  .statistique-title{
+    font-size: 1.5rem;
+    font-weight: bold;
+    color: var(--secondary-color);
+  }
+  .statistique-button{
+    padding: 8px;
+    font-size: 14px;
+    cursor: pointer;
+  }
+  
   
