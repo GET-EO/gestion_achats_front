@@ -2,6 +2,9 @@ import { Table, TableBody, TableCell, TableContainer, TableHead, TableRow, Paper
 import "../../styles/budget/index.css"
 import ActionIcons from "../../components/ui/iconActions"
 import Options from "../../components/Options"
+import FormModal from "../../components/ui/formModal"
+import {Button} from "@mui/material"
+import { useState } from "react"
 
 const budgets = [
     {
@@ -37,9 +40,11 @@ const budgets = [
 
 
 const Budget = () => {
+  const[showModal, setShowModal] = useState(false)
   
   return(
         <div className="budget-container">
+        <Button variant="contained" onClick={()=>setShowModal(true)}>Add new Budget</Button>
         <Options title = 'Budget'/>
         <TableContainer component={Paper}>
           <Table sx={{ minWidth: 650 }} aria-label="tableau simple">
@@ -68,6 +73,18 @@ const Budget = () => {
             </TableBody>
           </Table>
         </TableContainer>
+        <FormModal
+        isOpen={showModal}
+        closeModal={() => setShowModal(false)}
+        title="Add new budget"
+        apiEndpoint="http://localhost:3000/users"
+        fields={[
+          { name: "department", label: "Departement", type: "text", required: true },
+          { name: "total_amount", label: "Montant total", type: "number", required: true },
+          { name: "used_amount", label: "Montant utlisé", type: "number", required: true },
+          { name: "remaining_amount", label: "Reste", type: "number" },
+        ]}
+      />
       </div>
     )
 }
