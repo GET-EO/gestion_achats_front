@@ -1,7 +1,9 @@
 import { Table, TableBody, TableCell, TableContainer, TableHead, TableRow, Paper } from "@mui/material"
+import { useState } from "react"
 import "../../styles/user/index.css"
 import ActionIcons from "../../components/ui/iconActions"
 import Options from "../../components/Options"
+import FormModal from "../../components/ui/formModal"
 
 const demandes = [
     {
@@ -65,10 +67,12 @@ const demandes = [
 
 
 const Demandes = () => {
+
+    const[showModal, setShowModal] = useState(false)
   
   return(
         <div className="users-container">
-        <Options  title="Request"/>
+        <Options  title="Request" openModal={()=>setShowModal(true)}/>
         <TableContainer component={Paper}>
           <Table sx={{ minWidth: 650 }} aria-label="tableau simple">
             <TableHead>
@@ -108,6 +112,19 @@ const Demandes = () => {
             </TableBody>
           </Table>
         </TableContainer>
+        <FormModal
+            isOpen={showModal}
+            closeModal={() => setShowModal(false)}
+            title="Add new Request"
+            apiEndpoint="http://localhost:3000/users"
+            fields={[
+            { name: "product_id", label: "Produit", type: "select", required: true, options: demandes.map(demande => ({value: demande.id.toString(), label: demande.reference})) },
+            { name: "quantity", label: "Quantité", type: "number", required: true },
+            { name: "total_price", label: "Total", type: "number", required: true },
+            { name: "request_date", label: "Reste", type: "date" },
+            { name: "manager_id", label: "Manager", type: "select", options: demandes.map(demande => ({value: demande.employe_id.toString(), label: demande.employe_nom}))},
+            ]}
+        />
       </div>
     )
 }

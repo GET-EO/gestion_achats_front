@@ -2,13 +2,15 @@ import { Table, TableBody, TableCell, TableContainer, TableHead, TableRow, Paper
 import "../../styles/user/index.css"
 import ActionIcons from "../../components/ui/iconActions"
 import Options from "../../components/Options"
+import FormModal from "../../components/ui/formModal"
+import { useState } from "react"
 
 const demandes = [
     {
       "id": "REQ-20240325-001",
-      "reference": "REQ-20240325-001",
+      "reference": "b0aaf475-9e2e-4efc-b4a5-5cd889b30d74",
       "date_creation": "2025-03-25",
-      "employe_id": "EMP-102",
+      "employe_id": "c7214068-c9a1-4ee2-bf4e-8da0368a3463",
       "employe_nom": "Jean Dupont",
       "departement": "IT",
       "articles": [
@@ -38,9 +40,9 @@ const demandes = [
     },
     {
       "id": "REQ-20240326-002",
-      "reference": "REQ-20240326-002",
+      "reference": "7a83f890-a860-4021-8870-622fa8f3bf67",
       "date_creation": "2025-03-26",
-      "employe_id": "EMP-205",
+      "employe_id": "6afe831c-79e3-436a-b341-2e504ad88b93",
       "employe_nom": "Alice Martin",
       "departement": "Finances",
       "articles": [
@@ -65,10 +67,12 @@ const demandes = [
 
 
 const Materiel = () => {
+
+  const[showModal, setShowModal] = useState(false)
   
   return(
         <div className="users-container">
-        <Options title="Material"/>
+        <Options title="Material" openModal={()=>setShowModal(true)}/>
         <TableContainer component={Paper}>
           <Table sx={{ minWidth: 650 }} aria-label="tableau simple">
             <TableHead>
@@ -108,6 +112,19 @@ const Materiel = () => {
             </TableBody>
           </Table>
         </TableContainer>
+        <FormModal
+            isOpen={showModal}
+            closeModal={() => setShowModal(false)}
+            title="Add new Request"
+            apiEndpoint="http://192.168.43.17:3000/products"
+            fields={[
+            { name: "name", label: "Materiel", type: "text", required: true},
+            { name: "description", label: "Description", type: "text", required: true },
+            { name: "unit_price", label: "Prix unitaire", type: "number", required: true },
+            { name: "supplier_id", label: "Fournisseur", type: "select", options: demandes.map(demande => ({value: demande.employe_id.toString(), label: demande.employe_id})) },
+            { name: "category_id", label: "Catégories", type: "select", options: demandes.map(demande => ({value: demande.reference.toString(), label: demande.reference}))},
+            ]}
+        />
       </div>
     )
 }

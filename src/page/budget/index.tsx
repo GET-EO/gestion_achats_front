@@ -3,7 +3,6 @@ import "../../styles/budget/index.css"
 import ActionIcons from "../../components/ui/iconActions"
 import Options from "../../components/Options"
 import FormModal from "../../components/ui/formModal"
-import {Button} from "@mui/material"
 import { useState } from "react"
 
 const budgets = [
@@ -44,8 +43,8 @@ const Budget = () => {
   
   return(
         <div className="budget-container">
-        <Button variant="contained" onClick={()=>setShowModal(true)}>Add new Budget</Button>
-        <Options title = 'Budget'/>
+        {/* <Button variant="contained" >Add new Budget</Button> */}
+        <Options title = 'Budget' openModal={()=>setShowModal(true)}/>
         <TableContainer component={Paper}>
           <Table sx={{ minWidth: 650 }} aria-label="tableau simple">
             <TableHead>

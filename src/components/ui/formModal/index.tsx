@@ -2,13 +2,14 @@ import React from "react";
 import { useForm, Controller } from "react-hook-form";
 import { Container, TextField, MenuItem, Button, Typography } from "@mui/material";
 import "./FormModal.css";
+import MaterialService from "../../../services/api_service/materialService";
 
 interface Field {
   name: string;
   label: string;
   type: string;
   required?: boolean;
-  options?: string[];
+  options?: {value: string,  label: string}[];
 }
 
 interface FormModalProps {
@@ -23,19 +24,9 @@ const FormModal: React.FC<FormModalProps> = ({ isOpen, closeModal, title, apiEnd
   const { handleSubmit, control, formState: { errors }, reset } = useForm();
 
   const onSubmit = async (data: any) => {
-    try {
-      const response = await fetch(apiEndpoint, {
-        method: "POST",
-        headers: { "Content-Type": "application/json" },
-        body: JSON.stringify(data),
-      });
-      if (!response.ok) throw new Error("Erreur lors de l'envoi");
-      console.log("Données envoyées:", data);
-      reset();
-      closeModal();
-    } catch (error) {
-      console.error("Erreur:", error);
-    }
+    MaterialService.add(data)
+    console.log("Data form", data);
+    
   };
 
   if (!isOpen) return null;
@@ -58,7 +49,7 @@ const FormModal: React.FC<FormModalProps> = ({ isOpen, closeModal, title, apiEnd
                         error={!!errors[field.name]}
                       >
                         {field.options?.map((option) => (
-                          <MenuItem key={option} value={option}>{option}</MenuItem>
+                          <MenuItem key={option.label} value={option.value}>{option.label}</MenuItem>
                         ))}
                       </TextField>
                     ) : (
