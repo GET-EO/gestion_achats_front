@@ -1,6 +1,7 @@
 import { Table, TableBody, TableCell, TableContainer, TableHead, TableRow, Paper } from "@mui/material"
 import "../../styles/user/index.css"
 import ActionIcons from "../../components/ui/iconActions"
+import Options from "../../components/Options"
 
 const demandes = [
     {
@@ -67,7 +68,7 @@ const Materiel = () => {
   
   return(
         <div className="users-container">
-        <h1 className="users-title">Materiels</h1>
+        <Options title="Material"/>
         <TableContainer component={Paper}>
           <Table sx={{ minWidth: 650 }} aria-label="tableau simple">
             <TableHead>
