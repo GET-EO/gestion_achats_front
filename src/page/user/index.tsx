@@ -1,4 +1,4 @@
-import { useState } from "react"
+import { useEffect, useState } from "react"
 import { Table, TableBody, TableCell, TableContainer, TableHead, TableRow, Paper, Container, Typography, TextField, Button, MenuItem } from "@mui/material"
 import "../../styles/user/index.css"
 import ActionIcons from "../../components/ui/iconActions"
@@ -101,9 +101,23 @@ const Users = () => {
 
     const onSubmit = (data: any) => {
         UserService.register(data);
-        console.log("Données du formulaire:", data);
+        
     };
-  
+    const [users, setUsers]: any = useState([]);
+    useEffect(() => {
+      const fetchUsers = async () => {
+          try {
+              const data = await UserService.getAllUsers();
+              setUsers(data);
+              
+          } catch (err: any) {
+              console.log(err.message);
+          } 
+      };
+
+      fetchUsers();
+
+  }, [users]);
   
   return(
         <div className="users-container">
@@ -119,24 +133,22 @@ const Users = () => {
                 <TableCell>Nom</TableCell>
                 <TableCell>Prénoms</TableCell>
                 <TableCell>Email</TableCell>
-                <TableCell>Phone</TableCell>
                 <TableCell>Role</TableCell>
                 <TableCell>Departement</TableCell>
                 <TableCell>Opérations</TableCell>
               </TableRow>
             </TableHead>
             <TableBody>
-              {rows.map((row) => (
+              {users.map((row: any) => (
               <TableRow
                 key={row.id}
                 sx={{ '&:last-child td, &:last-child th': { border: 0 } }}
               >
-                <TableCell component="th" scope="row">{row.nom}</TableCell>
-                <TableCell component="th" scope="row">{row.prenom}</TableCell>
+                <TableCell component="th" scope="row">{row.last_name}</TableCell>
+                <TableCell component="th" scope="row">{row.first_name}</TableCell>
                 <TableCell component="th" scope="row">{row.email}</TableCell>
-                <TableCell component="th" scope="row">{row.number_phone}</TableCell>
                 <TableCell component="th" scope="row">{row.role}</TableCell>
-                <TableCell component="th" scope="row">{row.departement}</TableCell>
+                <TableCell component="th" scope="row">{row.department}</TableCell>
                 <TableCell component="th" scope="row"><ActionIcons/></TableCell>
               </TableRow>
               ))}

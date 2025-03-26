@@ -40,6 +40,7 @@ const UserService = {
 
     async register(formData: RegisterFormData): Promise<any> {
         try {
+            console.log(formData)
             const response = await fetch(`${apiUrl}/users`, {
                 method: 'POST',
                 headers: {
@@ -58,6 +59,23 @@ const UserService = {
             throw error;
         }
     },
+
+    async getAllUsers(): Promise<any> {
+        try {
+            const response = await fetch(`${apiUrl}/users`);
+
+            if (!response.ok) {
+                throw new Error(`Erreur ${response.status}: ${response.statusText}`);
+            }
+
+            const data = await response.json();
+            console.log("Utilisateurs récupérés :", data); // Affiche les données dans la console
+            return data;
+        } catch (error) {
+            console.error("Erreur lors de la récupération des utilisateurs:", error);
+            throw error;
+        }
+    }
 };
 
 export default UserService;
